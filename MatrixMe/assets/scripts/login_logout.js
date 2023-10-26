@@ -6,6 +6,9 @@ let timer = null;
 
 $("form").submit(function(e){
     e.preventDefault();
+})
+
+$("form[name=login_form]").submit(function(){
     const username = $("#username").val();
     const password = $("#password").val();
 
@@ -21,6 +24,28 @@ $("form").submit(function(e){
         message = "Password is incorrect";
     }else{
         message = "Your login credentials are a match";
+        type = "success";
+    }
+
+    showMessage(message, type);
+})
+
+$("form[name=signup_form]").submit(function(){
+    const fullname = $("#fullname").val();
+    const email = $("#email").val();
+    const password = $("#password").val();
+
+    let type = "error";
+    let message = "";
+
+    if(fullname == ""){
+        message = "Fullname was not provided";
+    }else if(email == ""){
+        message = "Email was not provided";
+    }else if(password == ""){
+        message = "Password was not provided";
+    }else{
+        message = "Your account was created successfully";
         type = "success";
     }
 
