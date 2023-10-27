@@ -90,7 +90,7 @@ function createDemoItems(){
                 "       <img src=\"assets/images/products/" + image + ".jpg\" alt=\"\">" +
                 "   </div>" +
                 "   <div class=\"content\">" +
-                "       <h4 class=\"title\">" + image + "</h4>" +
+                "       <h4 class=\"title\"><a href=\"productdetails.html\">" + image + "</a></h4>" +
                 "       <div class=\"price item_price\" data-price=\"299.99\">" +
                 "           <span class=\"current_price\">GHC 299.99</span>" +
                 "           <span class=\"discounted_price\"><s>599.99</s></span>" +

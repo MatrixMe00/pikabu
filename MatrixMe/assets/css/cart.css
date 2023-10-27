@@ -142,6 +142,11 @@
     transition: unset;
 }
 
+a{
+    color: inherit;
+    text-decoration: unset;
+}
+
 @media screen and (max-width: 540px){
     #cart-empty{
         background-size: 30%;
