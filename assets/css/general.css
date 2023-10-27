@@ -32,6 +32,11 @@ main > section:first-child{
     font-weight: 300;
 }
 
+a{
+    color: inherit;
+    text-decoration: unset;
+}
+
 .page_location > span:not(.current):after{
     content: ">";
     margin-left: 1em;

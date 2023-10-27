@@ -35,6 +35,14 @@ section.product .content{
     align-self: center;
 }
 
+section.product .content > *{
+    margin: 0.75em auto;
+}
+
+section.product .content  > *:last-child{
+    margin-button: 0;
+}
+
 .delivery_status{
     margin-top: 1rem;
 }
