@@ -6,6 +6,9 @@
     <title>Cart Page</title>
     <script src="assets/jquery/uncompressed_jquery.js"></script>
 
+    <!-- Paystack payment -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
     <!-- stylesheets -->
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/css/general.css">
@@ -104,15 +107,20 @@
         <section id="cart-section">
             <div class="items"></div>
             <div class="cart_summary">
-                <h3 class="title">Cart Summary</h3>
-                <div class="sub">
-                    <span>Subtotal</span>
-                    <strong class="total_cash_element">GHC 1199.96</strong>
+                <div class="info">
+                    <h3 class="title">Cart Summary</h3>
+                    <div class="sub">
+                        <span>Subtotal</span>
+                        <strong class="total_cash_element">GHC 1199.96</strong>
+                    </div>
+                    <p>Free Delivery. Shipping Fees not included</p>
+                    <div class="sub ttl">
+                        <span>Total</span>
+                        <strong class="total_cash_element">GHC 1199.96</strong>
+                    </div>
                 </div>
-                <p>Free Delivery. Shipping Fees not included</p>
-                <div class="sub ttl">
-                    <span>Total</span>
-                    <strong class="total_cash_element">GHC 1199.96</strong>
+                <div class="checkout">
+                    <button type="button" onclick="payWithPaystack()">Checkout</button>
                 </div>
             </div>
         </section>

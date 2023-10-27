@@ -76,30 +76,33 @@ function modifyBoughtItems(item_id, operation, is_new = false){
 
 function createDemoItems(){
     const container = $("#cart-section .items");
-    const max_items = parseInt(Math.random() * 10) + 1;
-    cart_items = max_items;
-    console.log(cart_items, max_items);
 
-    for(i = 1; i <= max_items; i++){
-        const image = images[parseInt(Math.random() * 100) % images.length];
-        const item = "" + 
-            "<div class=\"item\" id=\"item" + i + "\">" +
-            "   <div class=\"img\">" +
-            "       <img src=\"assets/images/products/" + image + ".jpg\" alt=\"\">" +
-            "   </div>" +
-            "   <div class=\"content\">" +
-            "       <h4 class=\"title\">" + image + "</h4>" +
-            "       <div class=\"price item_price\" data-price=\"299.99\">" +
-            "           <span class=\"current_price\">GHC 299.99</span>" +
-            "           <span class=\"discounted_price\"><s>599.99</s></span>" +
-            "       </div>" +
-            "   </div>" +
-            "   <div class=\"button\">" +
-            "       <button onclick=\"updateCart('remove'," + i + ")\">Remove Item</button>" +
-            "   </div>" +
-            "</div>";
-        
-        container.append(item);
+    //create demo items if its empty
+    if(container.html() == ""){
+        const max_items = parseInt(Math.random() * 10) + 1;
+        cart_items = max_items;
+
+        for(i = 1; i <= max_items; i++){
+            const image = images[parseInt(Math.random() * 100) % images.length];
+            const item = "" + 
+                "<div class=\"item\" id=\"item" + i + "\">" +
+                "   <div class=\"img\">" +
+                "       <img src=\"assets/images/products/" + image + ".jpg\" alt=\"\">" +
+                "   </div>" +
+                "   <div class=\"content\">" +
+                "       <h4 class=\"title\">" + image + "</h4>" +
+                "       <div class=\"price item_price\" data-price=\"299.99\">" +
+                "           <span class=\"current_price\">GHC 299.99</span>" +
+                "           <span class=\"discounted_price\"><s>599.99</s></span>" +
+                "       </div>" +
+                "   </div>" +
+                "   <div class=\"button\">" +
+                "       <button onclick=\"updateCart('remove'," + i + ")\">Remove Item</button>" +
+                "   </div>" +
+                "</div>";
+            
+            container.append(item);
+        }
     }
 }
 
@@ -145,6 +148,32 @@ function makeRealisticMoney(money){
     }
 
     return money;
+}
+
+function payWithPaystack(){
+    const cust_amount = total_cash * 100;
+    const cust_email = "safosah00@gmail.com";
+    const api_key = "pk_test_3a5dff723cbd3fe22c4770d9f924d05c77403fca";
+
+    try {
+        var handler = PaystackPop.setup({
+            key: api_key,
+            email: cust_email,
+            amount: cust_amount,
+            currency: "GHS",
+            callback: function(response){
+                alert("Payment was successful. Reference is " + response.reference);
+            },
+            onClose: function(){
+                alert('Transaction has been canceled by user');
+            }
+        });
+        handler.openIframe();   
+    } catch (error) {
+        error = error.toString();
+
+        alert(error);
+    }
 }
 
 //on ready function

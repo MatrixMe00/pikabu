@@ -95,15 +95,35 @@
 /* cart summary */
 #cart-section .cart_summary{
     flex: 1 1 200px;
-    background-color: #fafafa;
     height: fit-content;
     position: sticky;
     top: 5em;
     z-index: 0;
 }
 
-.cart_summary > *{
+.cart_summary .info{
+    background-color: #fafafa;
+}
+
+.cart_summary .info > *, .cart_summary .checkout{
     padding: 0 0.75em;
+}
+
+.checkout{
+    margin-top: 1em;
+}
+
+.checkout button{
+    padding: 0.75em 1em;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.checkout button:hover{
+    background-color: #222;
 }
 
 .cart_summary .title{
