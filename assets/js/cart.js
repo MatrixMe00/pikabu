@@ -112,7 +112,7 @@ function giveRandomPricing(){
         const money = randomMoney()
         const current_price = $(element).children(".current_price");
         const discounted_price_element = $(element).children(".discounted_price").children("s");
-        const discounted = parseFloat(parseFloat(money) + (money * 20 / 100)).toFixed(2)
+        const discounted = parseFloat(parseFloat(money) + (money * 20 / 100)).toFixed(2);
         
         $(element).attr("data-price", money)
         current_price.html("GHC " + makeRealisticMoney(money));

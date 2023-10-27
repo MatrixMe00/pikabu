@@ -279,6 +279,13 @@
 
             $(this).addClass("current");
         })
+
+        $(document).ready(function(){
+            const money = randomMoney();
+            const discounted = parseFloat(parseFloat(money) + (money * 20 / 100)).toFixed(2);
+            $(".current_price").html("GHC " + makeRealisticMoney(money));
+            $(".discounted_price s").html("GHC " + makeRealisticMoney(discounted));
+        })
     </script>
 </body>
 </html>
