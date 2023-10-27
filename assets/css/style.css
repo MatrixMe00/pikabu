@@ -73,6 +73,7 @@
 
    body {
     background-color: var(--body-color);
+    line-height: 2;
    }
 
    h1,
