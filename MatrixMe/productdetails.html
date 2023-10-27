@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/general.css">
     <link rel="stylesheet" href="assets/css/productdetails.css">
     <script src="assets/jquery/uncompressed_jquery.js"></script>
 </head>
@@ -17,18 +18,18 @@
             <span></span>
             <span></span>
         </div>
-
+    
         <!-- Site logo -->
         <div id="logo">
             <h1>PIKABU</h1>
         </div>
-
+    
         <!-- Search bar -->
         <div class="form">
             <input type="search" name="search" id="search" placeholder="Search Products">
             <button type="submit" name="submit"></button>
         </div>
-
+    
         <!-- Right Section -->
         <div id="right_section">
             <!-- User details -->
@@ -36,17 +37,17 @@
                 <a href="login.html"><button>Login</button></a>
                 <a href="signup.html"><button>Signup</button></a>
             </div>
-
+    
             <!-- Cart section -->
-            <div id="cart">
+            <a href="cart.html" id="cart">
                 <div class="img">
                     <img src="assets/images/cart.png" alt="cart">
                     <span id="cart_counter">10</span>
                 </div>
                 <span>Cart</span>
-            </div>
+            </a>
         </div>
-
+    
         <!-- Hamburgar content -->
         <div id="ham_content">
             <div id="blurry_nav"></div>
@@ -167,8 +168,11 @@
                         <span class="number">1</span>
                         <span class="button add">+</span>
                     </div>
-                    <button>
+                    <button class="add_to_cart">
                         Add To Cart
+                    </button>
+                    <button class="remove_from_cart no_disp">
+                        Remove From cart
                     </button>
                 </div>
             </div>
@@ -234,6 +238,7 @@
     </main>
 
     <script src="assets/scripts/nav.js"></script>
+    <script src="assets/scripts/cart.js"></script>
     <script>
         $(".item_number .button").click(function(){
             let add = true;

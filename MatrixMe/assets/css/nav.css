@@ -55,6 +55,9 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 /* logo */
@@ -107,6 +110,9 @@ nav{
 /* Cart */
 #cart{
     display: flex;
+    text-decoration: none;
+    align-items: center;
+    color: inherit;
 }
 
 #cart .img{
@@ -180,8 +186,6 @@ nav{
     margin: auto 1.5em;
     padding: 1em 0.1em;
 }
-
-img{width: 100%; object-fit: cover; object-position: center; height: 100%;}
 
 @media screen and (max-width: 540px){
     .form input, #right_section .login_signup{display: none}

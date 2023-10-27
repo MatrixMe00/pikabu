@@ -1,17 +1,8 @@
 //global variables
-const images = [
-    "Babies All Over Print Jumpsuit", "Baby Bath Seat Support", "Baby Pacifier Feeder Fresh Fruit Silicone Feeding Teether",
-    "Boys Baby Clothes Children's Short Sleeve Pants Set", "Children's Casual Sneakers Unisex Running Shoes", "Children's Clothing 2-Piece Overalls Short-Sleeved Suit Yellow",
-    "Children's Clothing 2-Piece Sweatshirt + Pants Set Green", "Children's Clothing Set Sweatshirt+Pants+Shoulder Bag Blue", "Children's Luminous Sports Shoes",
-    "Ghandour Cosmetics Baby Girl Powder", "girl underwear", "Girls Sports Sweet Princess Board Shoes", "Girls Vest Sleeveless Dress Chiffon Skirt Princess Dress-Black", "Multifunctional Waterproof Mom Baby",
-    "New Born Baby Boy Clothes Babies", "Sandals For Newborn Babies", "Seba Med Baby Cream", "Softcare 1 Set of Baby Wipes"
-];
-
 let cart_items = 0;
-let cart_items_element = $("#cart_counter");
-let total_cash_element = $(".total_cash_element");
+let cart_items_element = $("#cart_items_element");
+let total_cash_element = $("#total_cash_element");
 let total_cash = 0;
-const shipping_fee = 0;
 
 //global functions
 function updateCart(type, item_id = 0){
@@ -19,7 +10,7 @@ function updateCart(type, item_id = 0){
     const item = $("#item" + item_id);
 
     //get the cash amount
-    const cash = parseFloat(item.find(".item_price").attr("data-price"));
+    const cash = parseFloat(item.find("p.item_price").attr("data-price"));
     
     if(type == "add"){
         total_cash += cash;
@@ -39,7 +30,11 @@ function updateCart(type, item_id = 0){
     }
 
     if(cart_items == 0){
-        $("#cart-section, #cart-empty").toggleClass("no_disp")
+        $("#b_items").html(
+            "<p class=\"no-item\">" +
+            "No items in the cart" +
+            "</p>"
+        )
     }
 
     item.find(".add_to_cart, .remove_from_cart").toggleClass("no_disp");
@@ -54,14 +49,14 @@ function updateCartElement(){
 }
 
 function updateTotalCashElement(){
-    total_cash_element.html("GHC " + makeRealisticMoney(total_cash.toFixed(2)));
+    total_cash_element.html(total_cash.toFixed(2));
 }
 
 function modifyBoughtItems(item_id, operation, is_new = false){
     const container = $("#b_items");
 
     if(operation == "remove"){
-        $("#item" + item_id).remove();
+        $("#b_item" + item_id).remove();
     }else{
         const item = $("#item" + item_id);
         const bought_item = "<div class=\"item\" id=\"b_item" + item_id + "\">" + item.find(".content").html() + "</div>";
@@ -75,27 +70,23 @@ function modifyBoughtItems(item_id, operation, is_new = false){
 }
 
 function createDemoItems(){
-    const container = $("#cart-section .items");
+    const container = $("#items");
     const max_items = parseInt(Math.random() * 10) + 1;
-    cart_items = max_items;
-    console.log(cart_items, max_items);
 
     for(i = 1; i <= max_items; i++){
-        const image = images[parseInt(Math.random() * 100) % images.length];
         const item = "" + 
             "<div class=\"item\" id=\"item" + i + "\">" +
-            "   <div class=\"img\">" +
-            "       <img src=\"assets/images/products/" + image + ".jpg\" alt=\"\">" +
-            "   </div>" +
             "   <div class=\"content\">" +
-            "       <h4 class=\"title\">" + image + "</h4>" +
-            "       <div class=\"price item_price\" data-price=\"299.99\">" +
-            "           <span class=\"current_price\">GHC 299.99</span>" +
-            "           <span class=\"discounted_price\"><s>599.99</s></span>" +
-            "       </div>" +
+            "      <div class=\"name\">" +
+            "          <h2>Item name " + i +"</h2>" +
+            "      </div>" +
+            "      <div class=\"price\">" +
+            "          <p class=\"item_price\" data-price=\"\"></p>" +
+            "      </div>" +
             "   </div>" +
-            "   <div class=\"button\">" +
-            "       <button onclick=\"updateCart('remove'," + i + ")\">Remove Item</button>" +
+            "   <div class=\"buttons\">" +
+            "       <button type='button' class=\"add_to_cart\" onclick=\"updateCart('add'," + i + ")\">Add to Cart</button>" +
+            "       <button type='button' class=\"remove_from_cart no_disp\" onclick=\"updateCart('remove'," + i + ")\">Remove From Cart</button>" +
             "   </div>" +
             "</div>";
         
@@ -104,19 +95,10 @@ function createDemoItems(){
 }
 
 function giveRandomPricing(){
-    $(".item_price").each(function(index, element){
+    $("p.item_price").each(function(index, element){
         //create a random money
         const money = randomMoney()
-        const current_price = $(element).children(".current_price");
-        const discounted_price_element = $(element).children(".discounted_price").children("s");
-        const discounted = parseFloat(parseFloat(money) + (money * 20 / 100)).toFixed(2)
-        
-        $(element).attr("data-price", money)
-        current_price.html("GHC " + makeRealisticMoney(money));
-        discounted_price_element.html("GHC " + makeRealisticMoney(discounted));
-
-        //get the current total price
-        total_cash += parseFloat(money);
+        $(element).html("GHC " + makeRealisticMoney(money)).attr("data-price", money)
     })
 }
 
@@ -158,19 +140,15 @@ $(document).ready(function(){
 
     createDemoItems();
     updateCartElement();
-    giveRandomPricing();
     updateTotalCashElement();
+    giveRandomPricing();
 
     //button functionality for preloaded items
     add_to_cart.click(function(){
         updateCart("add");
-        $(this).addClass("no_disp");
-        $(this).siblings(".remove_from_cart").removeClass("no_disp");
     })
 
     remove_from_cart.click(function(){
         updateCart("remove");
-        $(this).addClass("no_disp");
-        $(this).siblings(".add_to_cart").removeClass("no_disp");
     })
 })

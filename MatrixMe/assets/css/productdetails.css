@@ -1,38 +1,7 @@
-main{
-    padding: 2em 2em 1em 2em;
-    font-family: serif;
-    max-width: 1020px;
-    margin: auto;
-}
-
-main *{
-    transition: all 0.2s;
-}
-/* page location design */
-.page_location{
-    padding: 0.5em 1em;
-    background-color: #bbb;
-    display: flex;
-    gap: 1em;
-    width: fit-content;
-    border-radius: 0.5em;
-    font-weight: 300;
-}
-
-.page_location > span:not(.current):after{
-    content: ">";
-    margin-left: 1em;
-}
-
-.page_location > span.current{
-    color: white;
-}
-
 /* categories */
 section.categories{
     display: flex;
     gap: 1.5em;
-    margin-top: 1em;
     overflow: auto;
     font-size: small;
     text-align: center;
@@ -54,7 +23,6 @@ section.categories{
 section.product{
     display: flex;
     flex-wrap: wrap-reverse;
-    margin-top: 1rem;
     background-color: #f8f8f8;
 }
 
@@ -127,7 +95,6 @@ section.product .content{
 section.prod_review{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1em;
 }
 
 .prod_review > * {
