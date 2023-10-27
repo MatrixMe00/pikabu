@@ -5,6 +5,7 @@ section.categories{
     overflow: auto;
     font-size: small;
     text-align: center;
+    justify-content: center;
 }
 
 .categories .category{
