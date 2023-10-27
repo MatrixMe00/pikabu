@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,300;1,400;1,500;1,600&family=Satisfy&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+}
 main{
     padding: 2em 2em 1em 2em;
-    font-family: serif;
     max-width: 1020px;
     margin: auto;
 }
@@ -10,7 +13,7 @@ main *{
 }
 
 main > section{
-    margin-top: 1em;
+    margin-top: 2em;
 }
 
 main > section:first-child{
@@ -22,6 +25,7 @@ main > section:first-child{
     padding: 0.5em 1em;
     background-color: #bbb;
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
     width: fit-content;
     border-radius: 0.5em;

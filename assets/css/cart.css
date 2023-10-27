@@ -105,6 +105,14 @@
     background-color: #fafafa;
 }
 
+.cart_summary .info > *{
+    margin: 1em auto;
+}
+
+.cart_summary .info > *:last-child{
+    margin-bottom: unset;
+}
+
 .cart_summary .info > *, .cart_summary .checkout{
     padding: 0 0.75em;
 }

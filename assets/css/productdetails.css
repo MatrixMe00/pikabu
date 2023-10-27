@@ -35,6 +35,10 @@ section.product .content{
     align-self: center;
 }
 
+.delivery_status{
+    margin-top: 1rem;
+}
+
 .product .current_price{
     font-size: larger; font-weight: 500;
 }
@@ -66,7 +70,7 @@ section.product .content{
 
 .product .content .foot{
     display: flex; justify-content: space-between;
-    padding: 1em 0; align-items: center;
+    padding: 1em 0; gap: 1em; align-items: center; flex-wrap: wrap;
 }
 
 .item_number{
@@ -95,6 +99,7 @@ section.product .content{
 section.prod_review{
     display: flex;
     flex-wrap: wrap;
+    gap: 1em;
 }
 
 .prod_review > * {
@@ -133,10 +138,10 @@ section.prod_review{
 }
 
 .prod_review .reviews{
-    margin: auto 1em;
     box-shadow: 0 0 5px 0 grey;
     font-size: small;
-    padding: 0 1em;
+    padding: 1em;
+    display: flex; flex-direction: column; gap: 1em;
 }
 
 .review{
@@ -150,5 +155,13 @@ section.prod_review{
 }
 
 @media screen and (max-width: 540px){
-    
+    .item_number{
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .product .content .foot button{
+        width: 100%;
+    }
 }
